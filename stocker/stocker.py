@@ -1,10 +1,11 @@
 # Quandl for financial analysis, pandas and numpy for data manipulation
 # fbprophet for additive models, #pytrends for Google trend data
-import quandl
+# import quandl
 import pandas as pd
 import numpy as np
 import fbprophet
 import pytrends
+import yfinance as yf
 from pytrends.request import TrendReq
 
 # matplotlib pyplot for plotting
@@ -30,7 +31,8 @@ class Stocker():
 
         # Retrieval the financial data
         try:
-            stock = quandl.get('%s/%s' % (exchange, ticker))
+            #stock = quandl.get('%s/%s' % (exchange, ticker))
+            stock = yf.download(ticker)
         
         except Exception as e:
             print('Error Retrieving Data.')
